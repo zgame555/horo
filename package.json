@@ -1,0 +1,30 @@
+{
+  "name": "horo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "deploy": "pnpm test && pnpm build && cd dist && git init -q -b gh-pages && git add -A && git commit -q -m deploy && git push -f https://github.com/zgame555/horo.git gh-pages && rm -rf .git"
+  },
+  "dependencies": {
+    "@heroui/react": "^3.2.7",
+    "@heroui/styles": "^3.2.7",
+    "@internationalized/date": "^3.12.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwind-variants": "^4.0.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}

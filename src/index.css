@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* Night-sky ink + indigo accent, carried over from the original กราฟชีวิต report.
+   Zone colours (สวรรค์ / โลกมนุษย์ / นรกภูมิ) are semantic and separate from the accent. */
+:root {
+  --accent: oklch(0.44 0.15 272);
+  --accent-foreground: oklch(0.99 0 0);
+  --background: oklch(0.965 0.006 275);
+  --foreground: oklch(0.25 0.04 272);
+
+  --zone-good: oklch(0.54 0.11 162);
+  --zone-mid: oklch(0.58 0.12 75);
+  --zone-bad: oklch(0.53 0.15 28);
+  --line: oklch(0.89 0.012 275);
+
+  --font-display: "Noto Serif Thai", "Thonburi", Georgia, serif;
+  --font-body: "IBM Plex Sans Thai", "Sarabun", "Leelawadee UI", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  line-height: 1.25;
+}
