@@ -18,16 +18,20 @@ const WEEKDAYS = 7;
 const zoneOf = (value: number): Zone =>
   value >= 9 ? "สวรรค์" : value >= 5 ? "โลกมนุษย์" : "นรกภูมิ";
 
-/** Thai 12-number life graph: weekday + Thai month + year animal, summed per column, mod 12. */
-export function lifeGraph(year: number, month: number, day: number): GraphColumn[] {
+/** Weekday of a Gregorian date, Sunday = 1. Throws on impossible dates. */
+export function weekdayOf(year: number, month: number, day: number): number {
   const date = new Date(Date.UTC(year, month - 1, day));
   if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) {
     throw new Error("วันเกิดไม่ถูกต้อง");
   }
+  return date.getUTCDay() + 1;
+}
 
+/** Thai 12-number life graph: weekday + Thai month + year animal, summed per column, mod 12. */
+export function lifeGraph(year: number, month: number, day: number): GraphColumn[] {
   // ponytail: weekday rolls at midnight and year animal at 1 Jan. Traditional rules roll the
   // day at sunrise and the animal at Thai new year; add birth time + lunar calendar when needed.
-  const weekday = date.getUTCDay() + 1; // Sunday = 1
+  const weekday = weekdayOf(year, month, day);
   const thaiMonth = (month % 12) + 1; // December = 1 (เดือนอ้าย)
   const animal = ((((year - 4) % 12) + 12) % 12) + 1; // ชวด = 1
 
